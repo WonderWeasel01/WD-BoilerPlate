@@ -1,0 +1,12 @@
+// src/pages/admin.jsx
+import React, { useEffect, useState } from "react";
+
+const Admin = () => {
+  return (
+    <div>
+      <h1>Admin</h1>
+    </div>
+  );
+};
+
+export default Admin;
