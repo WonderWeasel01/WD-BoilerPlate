@@ -1,13 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const PasswordProtect = ({ children }) => {
   const [enteredPassword, setEnteredPassword] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [correctPassword, setCorrectPassword] = useState("");
+  const [loading, setLoading] = useState(true); // New state to handle loading
 
-  const correctPassword = import.meta.env.VITE_ADMIN_PASSWORD; // Replace with
+  useEffect(() => {
+    // Fetch the password from the backend API
+    axios
+      .get("http://localhost:3001/api/data/get-password") // Correct endpoint
+      .then((response) => {
+        setCorrectPassword(response.data.password);
+        setLoading(false); // Set loading to false after fetching
+      })
+      .catch((error) => {
+        console.error("Error fetching password:", error);
+        setLoading(false); // Ensure loading state is updated even if there's an error
+      });
+  }, []);
 
   const handlePasswordSubmit = (e) => {
     e.preventDefault();
+    if (loading) {
+      alert("Password is loading. Please wait.");
+      return;
+    }
     if (enteredPassword === correctPassword) {
       setIsAuthenticated(true);
       localStorage.setItem("isAuthenticated", "true");
@@ -19,6 +38,11 @@ const PasswordProtect = ({ children }) => {
   // If already authenticated, show the children (protected routes)
   if (isAuthenticated || localStorage.getItem("isAuthenticated") === "true") {
     return children;
+  }
+
+  // If not authenticated and password is loading, show a loading message
+  if (loading) {
+    return <div>Loading...</div>;
   }
 
   // If not authenticated, show the password form
