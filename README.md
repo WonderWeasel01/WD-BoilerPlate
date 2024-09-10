@@ -34,7 +34,7 @@ npm install
 
 ## Usage
 
-To run the project, and the node server execute the following command:
+To run the project, from the WD-Boilerplate and the node server execute the following command:
 
 ```bash
 npm run dev
