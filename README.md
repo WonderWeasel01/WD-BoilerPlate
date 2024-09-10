@@ -24,6 +24,11 @@ npm install axios cors dotenv express mysql2 react react-dom react-router-dom ta
 npm install
 ```
 
+```bash
+cd backend
+npm install
+```
+
 ## Configuration
 
 1. Open the `.env` file located in the `/backend` directory.
