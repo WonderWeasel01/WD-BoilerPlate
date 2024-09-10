@@ -22,9 +22,6 @@ npm install axios cors dotenv express mysql2 react react-dom react-router-dom ta
 
 ```bash
 npm install
-```
-
-```bash
 cd backend
 npm install
 ```
