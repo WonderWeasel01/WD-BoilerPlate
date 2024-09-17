@@ -17,7 +17,7 @@ If you only need a Vite + React boilerplate with a password-protected admin, you
 3. Install the dependencies by running the following command:
 
 ```bash
-npm install axios cors dotenv express mysql2 react react-dom react-router-dom tailwindcss vite
+npm install axios cors dotenv express mysql2 react react-dom react-router-dom tailwindcss vite concurrently
 ```
 
 ```bash
