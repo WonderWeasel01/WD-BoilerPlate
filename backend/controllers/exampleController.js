@@ -1,7 +1,6 @@
-const db = require("../config/db"); // Import the database connection
+import db from "../config/db.js"; 
 
-// Controller to get all data from the 'Tracktorpull' table
-exports.getAllData = (req, res) => {
+const getAllData = (req, res) => {
   const query = "SELECT * FROM your-table-here"; // Replace with your actual table name
   db.query(query)
     .then(([results]) => {
@@ -12,15 +11,4 @@ exports.getAllData = (req, res) => {
     });
 };
 
-// Controller to get the password
-exports.getPassword = (req, res) => {
-  const adminPassword = process.env.ADMIN_PASSWORD; // Fetch the password from the environment variables
-
-  if (adminPassword) {
-    res.json({ password: adminPassword });
-  } else {
-    res
-      .status(500)
-      .json({ error: "Password not found in environment variables" });
-  }
-};
+export default {getAllData};

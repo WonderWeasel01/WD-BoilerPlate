@@ -1,4 +1,4 @@
-const mysql = require("mysql2");
+import mysql from "mysql2";
 
 // Create a connection pool
 const pool = mysql.createPool({
@@ -9,5 +9,5 @@ const pool = mysql.createPool({
   database: process.env.DB_IDENTIFIER,
 });
 
-// Export the pool
-module.exports = pool.promise();
+
+export default pool;

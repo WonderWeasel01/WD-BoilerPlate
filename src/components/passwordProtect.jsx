@@ -6,11 +6,12 @@ const PasswordProtect = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [correctPassword, setCorrectPassword] = useState("");
   const [loading, setLoading] = useState(true); // New state to handle loading
+  const url = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     // Fetch the password from the backend API
     axios
-      .get("http://localhost:3001/api/data/get-password") // Correct endpoint
+      .get(`${url}/api/get-password`) // Correct endpoint
       .then((response) => {
         setCorrectPassword(response.data.password);
         setLoading(false); // Set loading to false after fetching
